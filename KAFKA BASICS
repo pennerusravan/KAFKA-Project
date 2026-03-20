@@ -1,0 +1,87 @@
+kafka // 3 core concepts (messaging, storage, stream processing) — ✅
+Kafka is Asynchronous (cart example) — ✅ Perfect explanation
+Single line definition — ✅
+Producer → Topic → Consumer flow — ✅
+Topic = immutable data, unique name — ✅
+Partition = subset of topic, increases throughput — ✅
+Broker = Kafka server — ✅
+Cluster = group of brokers — ✅
+Offset = incremental number assigned to messages — ✅
+Crash recovery using offset — ✅
+Auto commit = every 5 seconds — ✅
+LAG = consumer behind in queue — ✅
+Retention policy = time or size based — ✅
+Connecting one broker = connects entire cluster — ✅
+_______________________________________________________________________________________________________________________________________________________________________________
+
+Kafka is Asynchronous : the producers fires an event and immediately moves on . it doesn't wait for anyone to process it and kafka rule = One partition = one consumer per consumer group consumer // if anything left it will become idel
+
+FOR EX: when u add any item in cart it will goes to cart in milleseconds . payment and email run later in parallel , independently
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+# Kafka is a distributed event streaming platform — think of it as a high-speed, fault-tolerant message highway between systems.
+
+
+
+
+# single line answer /// Kafka is a distributed messaging system or event system  that lets applications reliably send, store, and receive streams of data at massive scale//
+__________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+two microservices asynchronous communication we use kafka 
+
+
+request send = producer (microservice A) 
+
+message process = consumer (microservice B)
+
+TOPIC = producer stores data  in topic // producer pushes to topic and consumer receives the data // channel goes sends request to topic //topic = unique  name // data is immutable we cannot change once declared
+
+Partion = subset of topic //parelle ga run avitike/ throughput increase 
+
+BROKER = KAFKA SERVER // in topics partion , broker , producer and consumer 
+
+CLUSTER = group of multiple brokers 
+
+______________________________________________________________________________________________________________________________________________________________________________
+
+
+if in case it is crash it will continuous from number 
+
+so producers will commit then it will continues if incase down or restarted
+
+there is two types of commits:
+
+1)default = every 5 seconds it will commit // risk = successfully commit if data loss Ayia chances Ekua
+2) manual commit = when consumer receives the data / it will commit / 
+
+
+offset = mesesage ke iecha number it will commit 
+
+LAG = que lo una vatinee lag antamu /
+
+Retention policy : based on time or based on memory size // kafka lo messages anive eppidu delete cyalie annide 
+
+consumer group : single consumer lo multiple consumer untiye / work share cheskuntiye
+
+REPLICATION FACTOR : 2 partions 3 data sets / for EX :3 replications means : 1 leader and 2 followers __________
+
+_________________________________________________________________________________________________________________________________________________________________________________
+
+kafka = publish and susbcribe the stream of records //stores the streams of data record stored // loss ayia chance ledu
+
+
+
+if we coonect any broker it will connect eniter cluster brokers
+
+
+replication factor is most crucial we must give 3 for golden rule almost data safe // 
+
+for ex: DATA A || DATA B || DATA C || even two are deleted it will replicate from data c entire data 
+
+
+______________________________________________________________________________________________________________________________________________________________________________
