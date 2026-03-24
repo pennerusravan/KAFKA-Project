@@ -10,21 +10,30 @@ def delivery_report(err, msg):
     if err:
         print(f"Delivery failed: {err}")
     else:
-        print(f"Delivered to {msg.topic()}: partition {msg.partition()} at offset {msg.offset()}")
+        print(f"Delivered to {msg.topic()}")
 
-print("Producer started. Sending every 3 seconds...")
+print("Betting Producer started...")
+
 while True:
-    order = {
-        "order_id": str(uuid.uuid4()),
-        "user": "nana",
-        "item": "mushroom pizza",
-        "quantity": 6
+    bet = {
+        "bet_id": str(uuid.uuid4()),
+        "user_id": "user1",
+        "match": "IND vs AUS",
+        "bet_type": "win",
+        "team": "IND",
+        "odds": 1.85,
+        "stake": 500,
+        "timestamp": time.time()
     }
+
     producer.produce(
-        topic="orders",
-        key=order["order_id"].encode("utf-8"),
-        value=json.dumps(order).encode("utf-8"),
+        topic="bets",
+        key=bet["bet_id"].encode("utf-8"),
+        value=json.dumps(bet).encode("utf-8"),
         callback=delivery_report
     )
+
     producer.flush()
+
+    print(f"Sent: {bet}")
     time.sleep(3)
